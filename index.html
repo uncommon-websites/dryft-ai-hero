@@ -3,151 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dryft Hero Section</title>
+    <title>Dryft - Intelligence that Runs Manufacturing Operations</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: '#2F5CFF', // Approximated from screenshot
-                            dark: '#111111',
-                        }
-                    }
-                }
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-scale-in {
+            opacity: 0;
+            animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-0 { animation-delay: 0ms; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-600 { animation-delay: 600ms; }
+
+        .text-balance { text-wrap: balance; }
+        .text-pretty { text-wrap: pretty; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-fade-in-up, .animate-fade-in, .animate-scale-in {
+                animation: none;
+                opacity: 1;
+                transform: none;
             }
         }
-    </script>
-    <style>
-        /* Custom noise background simulation */
-        body {
-            background-color: #f9f9f9;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+
+        /* Custom font families to match the design's feel */
+        .font-sans-custom {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        .glitch-text {
-            /* Simulating the visual weight of the glitchy font */
-            letter-spacing: -0.02em;
+        .font-mono-custom {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        /* Subtle dot grid texture for background */
+        .bg-dot-grid {
+            background-color: #f6f6f6;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 24px 24px;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col overflow-x-hidden">
+<body class="bg-dot-grid text-[#111827] font-sans-custom antialiased min-h-screen flex flex-col overflow-x-hidden">
 
     <!-- Navigation -->
-    <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-[1600px] mx-auto">
-        <!-- Logo -->
-        <div class="flex items-center gap-2">
-            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-brand-blue">
-                <path d="M10 20L16 26L24 14L30 20" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 14L16 20" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+    <nav class="w-full px-8 py-8 flex justify-between items-center animate-fade-in delay-0 relative z-50 max-w-[1440px] mx-auto">
+        <div class="flex items-center gap-3">
+            <!-- Logo Mark -->
+            <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-[#244BFF]">
+                <path d="M0 10L6 4H12L6 10H0Z" fill="currentColor"/>
+                <path d="M8 16L14 10H20L14 16H8Z" fill="currentColor"/>
+                <path d="M16 10L22 4H28L22 10H16Z" fill="currentColor"/>
             </svg>
-            <span class="text-2xl font-bold tracking-tight text-black">dryft</span>
+            <!-- Logo Text -->
+            <span class="text-2xl font-medium tracking-tight">dryft</span>
         </div>
-
-        <!-- Menu -->
-        <nav class="hidden md:flex items-center gap-8">
-            <a href="#" class="text-sm font-medium text-gray-900 hover:text-brand-blue uppercase tracking-wide">Manifesto</a>
-            <a href="#" class="text-sm font-medium text-gray-900 hover:text-brand-blue uppercase tracking-wide">Team</a>
-            <a href="#" class="text-sm font-medium text-gray-900 hover:text-brand-blue uppercase tracking-wide">Blog</a>
-            <a href="#" class="text-sm font-medium text-gray-900 hover:text-brand-blue uppercase tracking-wide">Careers</a>
-        </nav>
-    </header>
+        
+        <div class="hidden md:flex items-center gap-10 text-[13px] tracking-[0.08em] uppercase text-gray-900">
+            <a href="#" class="hover:text-[#244BFF] transition-colors duration-200">Manifesto</a>
+            <a href="#" class="hover:text-[#244BFF] transition-colors duration-200">Team</a>
+            <a href="#" class="hover:text-[#244BFF] transition-colors duration-200">Blog</a>
+            <a href="#" class="hover:text-[#244BFF] transition-colors duration-200">Careers</a>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <main class="flex-grow w-full max-w-[1600px] mx-auto px-6 md:px-12 py-12 lg:py-20 grid lg:grid-cols-2 gap-12 items-center relative">
+    <main class="flex-grow flex items-center relative w-full max-w-[1440px] mx-auto px-8 pt-12 pb-32">
         
-        <!-- Left Content -->
-        <div class="flex flex-col items-start z-10 max-w-2xl">
-            <!-- Announcement Pill -->
-            <div class="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-full pl-2 pr-4 py-1.5 mb-8 shadow-sm hover:border-gray-300 transition-colors cursor-pointer">
-                <span class="w-2 h-2 rounded-full bg-brand-blue"></span>
-                <span class="text-sm text-gray-700 truncate max-w-[280px] sm:max-w-none">Announcing our $5M round led by General Catalyst,...</span>
-            </div>
-
-            <!-- Headline -->
-            <h1 class="text-5xl sm:text-6xl lg:text-[4.5rem] leading-[1.1] font-bold text-brand-blue mb-8 glitch-text">
-                Intelligence that Runs<br>
-                Manufacturing Operations
-            </h1>
-
-            <!-- Subheadline -->
-            <p class="text-xl sm:text-2xl text-gray-900 leading-relaxed font-normal mb-10 max-w-xl">
-                Dryft builds artificial intelligence that mimics, optimizes, and automates complex human decisions in manufacturing operations
-            </p>
-
-            <!-- CTA Button -->
-            <button class="group bg-brand-blue hover:bg-blue-700 text-white px-8 py-4 flex items-center gap-3 transition-all duration-200 shadow-lg shadow-blue-500/20">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:translate-x-1 transition-transform">
-                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="font-mono uppercase tracking-widest text-sm font-bold">Watch Video</span>
-            </button>
-        </div>
-
-        <!-- Right Content (Visuals) -->
-        <div class="relative w-full h-[600px] lg:h-[800px] select-none">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-center">
             
-            <!-- Background Blueprint Image (Placeholder) -->
-            <!-- Using a technical drawing placeholder to simulate the blueprint background -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-40 mix-blend-multiply pointer-events-none">
-                <img src="https://placehold.co/1000x1200/f0f0f0/cccccc?text=Technical+Blueprint+Drawing" alt="Technical Drawing" class="w-full h-full object-cover object-right grayscale contrast-125">
-            </div>
-
-            <!-- Decorative Annotation Markers (Scattered) -->
-            <div class="absolute top-[20%] right-[30%] border border-blue-400 w-4 h-4 flex items-center justify-center">
-                <div class="absolute -top-5 -right-5 text-[10px] text-brand-blue font-mono">219128</div>
-            </div>
-            <div class="absolute top-[45%] left-[10%] border border-blue-400 w-3 h-3">
-                <div class="absolute -top-4 -left-8 text-[10px] text-brand-blue font-mono">A247293B2</div>
-            </div>
-            <div class="absolute top-[15%] right-[10%] border border-blue-400 w-3 h-3"></div>
-            <div class="absolute bottom-[10%] right-[40%] border border-blue-400 w-3 h-3"></div>
-
-            <!-- Terminal / AI Interface Box -->
-            <div class="absolute bottom-[15%] left-0 md:left-[5%] w-full md:w-[90%] lg:w-[85%] bg-white/80 backdrop-blur-sm border border-brand-blue shadow-2xl overflow-hidden">
-                <!-- Terminal Header -->
-                <div class="flex justify-between items-center px-4 py-2 border-b border-brand-blue/30 bg-blue-50/50">
-                    <span class="text-brand-blue font-mono text-xs tracking-wider">A247293C3</span>
-                    <div class="w-4 h-4 border border-brand-blue/50"></div>
-                </div>
+            <!-- Left Content Column -->
+            <div class="lg:col-span-6 z-20 pr-4">
                 
-                <!-- Terminal Content -->
-                <div class="p-6 font-mono text-sm sm:text-base leading-relaxed text-gray-800">
-                    <div class="mb-1">Connecting to ERP... success</div>
-                    <div class="mb-3">Reading data from inventory</div>
+                <!-- Announcement Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded border border-gray-200 bg-white mb-8 animate-fade-in-up delay-100 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-[#244BFF]"></div>
+                    <span class="text-[13px] text-gray-700">Announcing our $5M round led by General Catalyst,...</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-[56px] lg:text-[64px] leading-[1.1] font-normal text-[#244BFF] tracking-tight mb-6 text-balance animate-fade-in-up delay-200">
+                    Intelligence that Runs<br>Manufacturing Operations
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-[20px] leading-[1.6] text-gray-800 max-w-[540px] mb-10 text-pretty animate-fade-in-up delay-300">
+                    Dryft builds artificial intelligence that mimics, optimizes, and automates complex human decisions in manufacturing operations
+                </p>
+
+                <!-- CTA Button -->
+                <button class="bg-[#244BFF] text-white px-6 py-3.5 font-mono-custom text-[13px] tracking-[0.08em] uppercase flex items-center gap-3 hover:opacity-90 transition-all duration-200 active:scale-97 animate-fade-in-up delay-400 shadow-sm">
+                    <span>&gt;</span> WATCH VIDEO
+                </button>
+            </div>
+
+            <!-- Right Visual Column -->
+            <div class="lg:col-span-6 relative h-[600px] w-full flex items-center justify-center lg:justify-end">
+                
+                <!-- Background Blueprint Illustration (Placeholder) -->
+                <div class="absolute inset-0 right-[-100px] top-[-50px] bottom-[-50px] z-0 animate-scale-in delay-500 opacity-40 pointer-events-none mix-blend-multiply">
+                    <img src="https://placehold.co/1000x800/f6f6f6/cccccc?text=Technical+Blueprint+Illustration" alt="Technical Blueprint" class="w-full h-full object-cover object-left">
+                </div>
+
+                <!-- Floating UI Box -->
+                <div class="relative z-10 w-full max-w-[480px] bg-[#f8faff]/95 backdrop-blur-md border border-[#244BFF] shadow-2xl shadow-[#244BFF]/10 animate-fade-in-up delay-600 lg:-translate-x-8">
                     
-                    <div class="mb-3 pl-4 border-l-2 border-transparent">
-                        <span class="text-brand-blue">✦ Hugo AI:</span> We have 3 late items
+                    <!-- Box Header -->
+                    <div class="flex justify-between items-center px-5 py-3 border-b border-[#244BFF]">
+                        <span class="font-mono-custom text-[13px] text-[#244BFF]">A247293C3</span>
+                        <div class="w-4 h-4 border border-[#244BFF]"></div>
                     </div>
                     
-                    <div class="mb-3">Thinking...</div>
-                    
-                    <div class="mb-1 pl-4 border-l-2 border-transparent">
-                        <span class="text-brand-blue">✦ Hugo AI:</span> Follow up with suppliers
-                    </div>
-                    
-                    <div class="pl-4 border-l-2 border-brand-blue bg-blue-50/30 -ml-4 py-1 pr-2 w-fit">
-                        <span class="text-brand-blue">✦ Hugo AI:</span> Increase safety stock by 5
-                        <span class="inline-block w-2 h-4 bg-brand-blue ml-1 align-middle animate-pulse"></span>
+                    <!-- Box Content -->
+                    <div class="p-6 font-mono-custom text-[13px] leading-[1.8] text-gray-800">
+                        <div>Connecting to ERP... success</div>
+                        <div>Reading data from inventory</div>
+                        
+                        <div class="pl-4 mt-1 mb-1 flex items-start">
+                            <span class="text-[#244BFF] mr-2">✦</span>
+                            <div><span class="text-[#244BFF]">Hugo AI:</span> We have 3 late items</div>
+                        </div>
+                        
+                        <div>Thinking...</div>
+                        
+                        <div class="pl-4 mt-1 flex items-start">
+                            <span class="text-[#244BFF] mr-2">✦</span>
+                            <div><span class="text-[#244BFF]">Hugo AI:</span> Follow up with suppliers</div>
+                        </div>
+                        <div class="pl-4 mt-1 flex items-start">
+                            <span class="text-[#244BFF] mr-2">✦</span>
+                            <div><span class="text-[#244BFF]">Hugo AI:</span> Increase safety stock by 5</div>
+                        </div>
+                        
+                        <!-- Blinking cursor effect -->
+                        <div class="w-2 h-3.5 bg-[#244BFF] mt-2 animate-pulse"></div>
                     </div>
                 </div>
-                
-                <!-- Side annotation on the terminal box -->
-                <div class="absolute top-1/2 -left-8 text-[9px] text-brand-blue font-mono -rotate-90 hidden md:block">A247293B</div>
-            </div>
 
-            <!-- Bottom Right Annotation -->
-            <div class="absolute bottom-[5%] right-[20%] border border-blue-400 w-4 h-4">
-                <div class="absolute top-5 left-0 text-[10px] text-brand-blue font-mono">199XC</div>
             </div>
-
         </div>
     </main>
 
